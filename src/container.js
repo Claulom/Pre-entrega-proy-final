@@ -26,12 +26,12 @@ export default class Productos {
 
     async save(item) {
         try {
-            await this.init()
+           
             item = {...item, id: this.data.length + 1}
             console.log(this.data)
             this.data.push(item)
             await fs.promises.writeFile(this.archivo, JSON.stringify(this.data, null, '\t')  )
-            return item.id
+            return item
         }
         catch (error) {
 

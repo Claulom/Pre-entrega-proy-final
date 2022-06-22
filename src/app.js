@@ -22,4 +22,4 @@ app.use(express.urlencoded({extended: true}))
 
 
 app.use('/api/products', productRouter)
-app.use('/cart', cartRouter) 
+app.use('/api/cart', cartRouter) 
