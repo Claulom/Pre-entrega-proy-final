@@ -1,3 +1,22 @@
-{"title":"Vaso","price":"500","thumbnail":"https://http2.mlstatic.com/D_NQ_NP_682976-MLA43484762899_092020-O.webp","description":"Vaso de vidrio","code":"V1","stock":"10","time":1655922417917,"id":1}
-{"title":"Buzo","price":"15000","thumbnail":"https://http2.mlstatic.com/D_NQ_NP_770674-MLA49029549687_022022-O.webp","description":"Buzos de colores","code":"B01","stock":"10","time":1655922417917,"id":2}
-{"title":"Buzo","price":"3500","thumbnail":"https://http2.mlstatic.com/D_NQ_NP_850877-MLA49830942226_052022-O.webp","description":"Buzos de colores","code":"B01","stock":"10","time":1655922417917,"id":3}
+[
+	{
+		"title": "Buzos",
+		"price": "3500",
+		"thumbnail": "https://http2.mlstatic.com/D_NQ_NP_850877-MLA49830942226_052022-O.webp",
+		"description": "Buzos de colores",
+		"code": "B01",
+		"stock": "15",
+		"time": 1655930871977,
+		"id": 2
+	},
+	{
+		"title": "Buzos",
+		"price": "3500",
+		"thumbnail": "https://http2.mlstatic.com/D_NQ_NP_850877-MLA49830942226_052022-O.webp",
+		"description": "Buzos de colores",
+		"code": "B01",
+		"stock": "15",
+		"time": 1655931273243,
+		"id": 2
+	}
+]

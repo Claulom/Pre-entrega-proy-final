@@ -7,15 +7,21 @@ export default class Productos {
         
         try {
             console.log('Initializing...')
-            this.init()
         }
         catch(error) {
             console.log(`Error Initializing ${error}`)
         }
     }
     
-    async init() {
-        this.data = await this.getAll()
+   
+    async getAll() {
+        try {
+            let objetosJSON = JSON.parse(await fs.promises.readFile(this.archivo, 'utf-8'))
+            return objetosJSON
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 
     async save(item) {
@@ -24,7 +30,7 @@ export default class Productos {
             item = {...item, id: this.data.length + 1}
             console.log(this.data)
             this.data.push(item)
-            await fs.promises.appendFile(this.archivo, JSON.stringify(item) + '\n')
+            await fs.promises.writeFile(this.archivo, JSON.stringify(this.data, null, '\t')  )
             return item.id
         }
         catch (error) {
@@ -34,17 +40,7 @@ export default class Productos {
         }
     }
     
-    async getAll() {
-        try {
-            let objetosJSON = await fs.promises.readFile(this.archivo, 'utf-8')
-            let objSwap = objetosJSON.split('\n').filter(obj => obj != '')
-            let objetos = objSwap.map(obj => JSON.parse(obj))
-            return objetos
-        }
-        catch (error) {
-            console.log(error)
-        }
-    }
+    
     
     async getById(id) {
         try {

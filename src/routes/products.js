@@ -17,32 +17,20 @@ const router = express.Router();
 }
  */
 router.get('/', (req, res)=>{
-    res.send(product.productos)
+    product.getAll()
+    .then(data => res.send (data))
 })
 
 router.get('/:id', async (req, res)=>{
     const { id } = req.params;
     const idNumber = Number(id);
+    let products = await product.getById(idNumber);
     
-    if (isNaN(idNumber)) {
-        return res.status(400).send({ error: 'El parámetro debe ser un número' });
-    }
+   if(products == null){
+       products = {error: 'El producto que desea buscar no existe'};
+   }
     
-    if (idNumber > product.nombre.length) {
-        return res.status(400).send({ error: 'El parámetro está fuera de rango' });
-    }
-    
-    if (idNumber < 0) {
-        return res.status(400).send({ error: 'El parámetro debe ser mayor a cero' });
-    }
-    
-    const product = await product.getById(idNumber);
-    
-    if (!product) {
-        return res.status(400).send({ error: `El producto con el id: ${id} no existe` });
-    }
-    
-    return res.send(product)
+    return res.json(products)
 })
 
 let time = Date.now()
@@ -54,8 +42,7 @@ router.post('/', async (req, res)=>{
     }
     
  await product.save({ title, price, thumbnail, description, code, stock, time });
- await product.init();
-    return res.send({ message: 'Producto agregado exitosamente'})
+    return res.send({message: 'Producto agregado'})
 })
 
 

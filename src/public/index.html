@@ -25,7 +25,7 @@
 
  
 
-    <form action="/products" method="POST">
+    <form action="/api/products" method="POST">
 
     <label for="title">Nombre del producto</label>
     <input type="text" name="title"><br>
@@ -54,16 +54,16 @@
         fetch('/products', { headers: { admin: 'true'}  })
             .then(response => {response.json()})
             .then(products => {
-                console.log(products)
+              
 
                 let html = "<table>"
                 for (const product of products) {
                     html +=  `
                         <tr>
+                            <td>${product.title}</td>
                             <td>${product.id}</td>
-                            <td>${product.nombre}</td>
                             <td>${product.description}</td>
-                            <td>${product.precio}</td>
+                            <td>${product.price}</td>
                             <td data-id="${product.id}"></td>
                         </tr>
                     `
