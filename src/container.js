@@ -34,13 +34,9 @@ export default class Productos {
             return item
         }
         catch (error) {
-
             console.log(error)
-
         }
     }
-    
-    
     
     async getById(id) {
         try {
@@ -79,6 +75,7 @@ export default class Productos {
             const productosParsed = JSON.stringify(productos);
             
             await fs.promises.writeFile(this.archivo, productosParsed)
+            return productosParsed
         }
         catch (error) {
             console.log(error)
